@@ -8,6 +8,14 @@ public class PlayerController : MonoBehaviour {
     public Transform visibleBody;
     public GameObject Catcher;
     public GameObject Cat;
+
+    private Rigidbody2D body;
+
+    private void Start()
+    {
+        body = GetComponent<Rigidbody2D>();
+    }
+ 
 	
 
     IEnumerator CatcherWait()
@@ -32,11 +40,11 @@ public class PlayerController : MonoBehaviour {
     }
 
 	void Update(){
-        float moveHorizontal = Input.GetAxis("Horizontal") * speed;
-        float moveVert = Input.GetAxis("Vertical") * speed;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVert = Input.GetAxis("Vertical");
 
-        Vector3 heading = new Vector3(moveHorizontal, moveVert, 0);
-        transform.position += heading * Time.deltaTime;
+        Vector3 heading = new Vector3(moveHorizontal, moveVert, 0).normalized;
+        body.velocity = heading * speed;
         if (heading.sqrMagnitude > 0.1f) visibleBody.up = heading;
 		
         if (Input.GetButtonDown("Catch"))

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CatchScript : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider c)
+    private void OnTriggerEnter2D(Collider2D c)
     {
         if(c.gameObject.tag == "Cat")
         {
