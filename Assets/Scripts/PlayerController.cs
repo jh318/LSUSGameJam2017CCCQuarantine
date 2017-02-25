@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player2Controller : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
 	
     public float speed;
     public Transform visibleBody;
     public GameObject Catcher;
     public GameObject Cat;
+    public string xAxis = "Horizontal";
+    public string yAxis = "Vertical";
+    public string catchButton = "Catch";
+    public string playerName = "player";
 
     private Rigidbody2D body;
 
@@ -21,7 +25,7 @@ public class Player2Controller : MonoBehaviour {
     IEnumerator CatcherWait()
     {
 
-        Debug.Log("User tried to catch something");               
+        Debug.Log(playerName + "tried to catch something");               
            
             
         Catcher.SetActive(true);
@@ -40,14 +44,14 @@ public class Player2Controller : MonoBehaviour {
     }
 
 	void Update(){
-        float moveHorizontal = Input.GetAxis("Horizontal2");
-        float moveVert = Input.GetAxis("Vertical2");
+        float moveHorizontal = Input.GetAxis(xAxis);
+        float moveVert = Input.GetAxis(yAxis);
 
         Vector3 heading = new Vector3(moveHorizontal, moveVert, 0).normalized;
         body.velocity = heading * speed;
         if (heading.sqrMagnitude > 0.1f) visibleBody.up = heading;
 		
-        if (Input.GetButtonDown("Catch2"))
+        if (Input.GetButtonDown(catchButton))
         {
             StartCoroutine("CatcherWait");
         }
