@@ -11,9 +11,8 @@ public class P2CatchScript : MonoBehaviour {
 		if(c.gameObject.tag == "Cat")
 		{
 			Debug.Log("Caught The Cat");
-
 			GameManager.instance.UpdateP2Score();
-
+			GameManager.instance.catCount--;
 			c.gameObject.SetActive(false);
 		}
 		if (c.gameObject.tag == "Barricade") 

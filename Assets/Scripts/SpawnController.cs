@@ -18,6 +18,7 @@ public class SpawnController : MonoBehaviour {
 			Vector3 spawnPosition = transform.position + (Vector3)Random.insideUnitCircle * radius;
 			Instantiate (kittenPrefab, spawnPosition, Quaternion.identity);
 			Debug.LogWarning ("Cat spawned");
+			GameManager.instance.catCount++;
 			yield return new WaitForSeconds (spawnTime);
 		}
 	}

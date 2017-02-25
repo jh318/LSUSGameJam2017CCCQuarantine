@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour {
 
     int scoreP1 = 0;
     int scoreP2 = 0;
-	float timePassed = 0.0f;
 	float timer = 0.0f; 
 
     public Text p1ScoreUI;
     public Text p2ScoreUI;
 	public Text timerUI;
+	public Text catCountUI;
+	public int catCount = 0; // needs to equal # of cats that begin in scene.
+
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour {
     {
 		timer += Time.deltaTime;
 		timerUI.text = "Time: " + Mathf.Round (timer);
+		catCountUI.text = "Kittens: " + catCount;
 
     }
 
