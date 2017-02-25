@@ -3,12 +3,17 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public string input;
-	Vector3 direction;
+	
+    public float speed;
+	
 
 	void Update(){
-		if (Input.GetKeyDown(input)) {
-			
-		}
+        float moveHorizontal = Input.GetAxis("Horizontal") * speed;
+        float moveVert = Input.GetAxis("Vertical") * speed;
+
+        moveHorizontal *= Time.deltaTime;
+        moveVert *= Time.deltaTime;
+        transform.position += new Vector3(moveHorizontal, moveVert, 0);
+		
 	}
 }
