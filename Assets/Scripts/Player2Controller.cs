@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour {
+public class Player2Controller : MonoBehaviour {
 
 	
     public float speed;
@@ -40,14 +40,14 @@ public class PlayerController : MonoBehaviour {
     }
 
 	void Update(){
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVert = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis("Horizontal2");
+        float moveVert = Input.GetAxis("Vertical2");
 
         Vector3 heading = new Vector3(moveHorizontal, moveVert, 0).normalized;
         body.velocity = heading * speed;
         if (heading.sqrMagnitude > 0.1f) visibleBody.up = heading;
 		
-        if (Input.GetButtonDown("Catch"))
+        if (Input.GetButtonDown("Catch2"))
         {
             StartCoroutine("CatcherWait");
         }
