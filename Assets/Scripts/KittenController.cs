@@ -4,15 +4,22 @@ using System.Collections;
 public class KittenController : MonoBehaviour {
 
 	public float speed;
-	Vector3 directionTime;
+
+	private Rigidbody2D body;
+	private Vector3 randomDirection;
+
 
 	void Start(){
-		directionTime = RandomDirectionNumberGenerator() * Time.deltaTime;
+		body = GetComponent<Rigidbody2D> ();
+		randomDirection = RandomDirectionNumberGenerator();
+		StartCoroutine ("ChangeDirection");
 	}
 
-	void Update(){
-		transform.position += directionTime;
-			
+	void FixedUpdate(){
+		body.velocity = randomDirection * speed;
+		if (body.velocity.x == 0 && body.velocity.y == 0) {
+			randomDirection = RandomDirectionNumberGenerator();
+		}
 	}
 		
 	Vector3 RandomDirectionNumberGenerator(){
@@ -26,5 +33,16 @@ public class KittenController : MonoBehaviour {
 		Vector3 randomDirection = new Vector3((float)x, (float)y, (float)z);
 		Debug.Log (randomDirection);
 		return randomDirection;
+	}
+
+	void OnCollisionEnter2D(){
+		randomDirection = RandomDirectionNumberGenerator();
+	}
+
+	IEnumerator ChangeDirection () {
+		while (enabled) {
+			yield return new WaitForSeconds (2);
+			randomDirection = RandomDirectionNumberGenerator();
+		}
 	}
 }
