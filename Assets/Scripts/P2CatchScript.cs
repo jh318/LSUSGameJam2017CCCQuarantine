@@ -15,7 +15,7 @@ public class P2CatchScript : MonoBehaviour {
 			GameManager.instance.catCount--;
 			c.gameObject.SetActive(false);
 		}
-		if (c.gameObject.tag == "Barricade") 
+		if (c.gameObject.tag == "Barricade" && hasBarricade == false) 
 		{
 			Debug.Log("Picked up barricade");
 			hasBarricade = true;

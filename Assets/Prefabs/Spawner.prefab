@@ -67,8 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd60ebe0efcb9f4dac19e552818df2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kittenPrefab: {fileID: 1079052916190556, guid: 58ea30b509720454c991ced7a5fee3d0,
-    type: 2}
+  prefab: {fileID: 1079052916190556, guid: 58ea30b509720454c991ced7a5fee3d0, type: 2}
   spawnEnabled: 1
   radius: 3
   spawnTime: 5
