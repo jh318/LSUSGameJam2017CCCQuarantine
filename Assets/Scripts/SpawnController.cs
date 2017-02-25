@@ -1,0 +1,27 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnController : MonoBehaviour {
+
+	public GameObject kittenPrefab;
+	public bool spawnEnabled = true;
+	public float radius = 3;
+
+	void Start(){
+		StartCoroutine ("SpawnTimer");
+	}
+
+	IEnumerator SpawnTimer(){
+		while (spawnEnabled) {
+			Vector3 spawnPosition = transform.position + (Vector3)Random.insideUnitCircle * radius;
+			Instantiate (kittenPrefab, spawnPosition, Quaternion.identity);
+			Debug.LogWarning ("Cat spawned");
+			yield return new WaitForSeconds (3);
+		}
+	}
+
+	void OnDrawGizmos () {
+		Gizmos.DrawWireSphere(transform.position, radius);
+	}
+}
