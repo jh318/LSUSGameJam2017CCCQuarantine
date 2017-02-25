@@ -8,7 +8,7 @@ public class CatchScript : MonoBehaviour {
     {
         if(c.gameObject.tag == "Cat")
         {
-            Debug.Log("Tried To Catch a cat");
+            Debug.Log("Caught The Cat");
             
             c.gameObject.SetActive(false);
         }
