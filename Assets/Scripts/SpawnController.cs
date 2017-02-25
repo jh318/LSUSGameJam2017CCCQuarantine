@@ -7,6 +7,7 @@ public class SpawnController : MonoBehaviour {
 	public GameObject kittenPrefab;
 	public bool spawnEnabled = true;
 	public float radius = 3;
+	public float spawnTime = 3;
 
 	void Start(){
 		StartCoroutine ("SpawnTimer");
@@ -17,7 +18,7 @@ public class SpawnController : MonoBehaviour {
 			Vector3 spawnPosition = transform.position + (Vector3)Random.insideUnitCircle * radius;
 			Instantiate (kittenPrefab, spawnPosition, Quaternion.identity);
 			Debug.LogWarning ("Cat spawned");
-			yield return new WaitForSeconds (3);
+			yield return new WaitForSeconds (spawnTime);
 		}
 	}
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class P1CatchScript : MonoBehaviour {
 
+	private bool hasBarricade = false;
+
     private void OnTriggerEnter2D(Collider2D c)
     {
         if(c.gameObject.tag == "Cat")
@@ -14,5 +16,17 @@ public class P1CatchScript : MonoBehaviour {
             
             c.gameObject.SetActive(false);
         }
+		if (c.gameObject.tag == "Barricade") 
+		{
+			Debug.Log("Picked up barricade");
+			hasBarricade = true;
+			c.gameObject.SetActive (false);
+		}
+		if (c.gameObject.tag == "Spawner" && hasBarricade == true) 
+		{
+			c.gameObject.SetActive (false);
+			hasBarricade = false;
+			Debug.Log ("Stopped spawner");
+		}
     }
 }
