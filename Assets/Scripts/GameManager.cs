@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-
     public static GameManager instance;
 
     int scoreP1 = 0;
@@ -17,8 +16,10 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-        instance.p1ScoreUI.text = "Player 1 score: " + instance.scoreP1;
-        instance.p2ScoreUI.text = "Player 2 score: " + instance.scoreP2;
+		if (instance == null)
+			instance = this;
+        p1ScoreUI.text = "Player 1 score: " + scoreP1;
+        p2ScoreUI.text = "Player 2 score: " + scoreP2;
     }
 
     private void Start()
@@ -27,18 +28,18 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public static void UpdateP1Score()
+    public void UpdateP1Score()
     {
-        instance.scoreP1 += 1;
-        Debug.Log("Player 1 score: " + instance.scoreP1);
-        instance.p1ScoreUI.text = "Player 1 score: " + instance.scoreP1;
+        scoreP1 += 1;
+        Debug.Log("Player 1 score: " + scoreP1);
+        p1ScoreUI.text = "Player 1 score: " + scoreP1;
     }
 
-    public static void UpdateP2Score()
+    public void UpdateP2Score()
     {
-        instance.scoreP2 += 1;
-        Debug.Log("Player 2 score: " + instance.scoreP2);
-        instance.p2ScoreUI.text = "Player 2 score: " + instance.scoreP2;
+        scoreP2 += 1;
+        Debug.Log("Player 2 score: " + scoreP2);
+        p2ScoreUI.text = "Player 2 score: " + scoreP2;
     }
 
 }

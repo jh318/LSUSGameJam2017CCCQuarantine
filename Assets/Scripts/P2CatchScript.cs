@@ -12,7 +12,7 @@ public class P2CatchScript : MonoBehaviour {
 		{
 			Debug.Log("Caught The Cat");
 
-			GameManager.UpdateP1Score();
+			GameManager.instance.UpdateP2Score();
 
 			c.gameObject.SetActive(false);
 		}
