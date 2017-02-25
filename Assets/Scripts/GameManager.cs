@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour {
 
     int scoreP1 = 0;
     int scoreP2 = 0;
-    
+	float timePassed = 0.0f;
+	float timer = 0.0f; 
+
     public Text p1ScoreUI;
     public Text p2ScoreUI;
+	public Text timerUI;
 
     private void Awake()
     {
@@ -22,9 +25,10 @@ public class GameManager : MonoBehaviour {
         p2ScoreUI.text = "Player 2 score: " + scoreP2;
     }
 
-    private void Start()
+    private void Update()
     {
-        
+		timer += Time.deltaTime;
+		timerUI.text = "Time: " + Mathf.Round (timer);
 
     }
 
