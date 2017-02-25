@@ -31,7 +31,7 @@ public class KittenController : MonoBehaviour {
 			y = Random.Range(-1,2);
 		}
 		Vector3 randomDirection = new Vector3((float)x, (float)y, (float)z);
-		Debug.Log (randomDirection);
+		//Debug.Log (randomDirection);
 		return randomDirection;
 	}
 
