@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour {
 	public Text catCountUI;
 	public Text gameOverUI;
 
+	public AudioClip[] catsMeow;
+	public AudioSource sound;
+	public AudioSource musicPitch;
 
     private void Awake()
     {
@@ -29,6 +32,10 @@ public class GameManager : MonoBehaviour {
         p1ScoreUI.text = "Player 1 score: " + scoreP1;
         p2ScoreUI.text = "Player 2 score: " + scoreP2;
     }
+
+	void Start(){
+		StartCoroutine ("Meow");
+	}
 
     private void Update()
     {
@@ -45,6 +52,7 @@ public class GameManager : MonoBehaviour {
 			Debug.LogWarning("Lose");
 			gameOverUI.text = "Catastrophic Crisis Imminent: Abort Mission";
 		}
+		musicPitch.pitch = catCount * .0003f + 1;
 
     }
 
@@ -61,5 +69,15 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Player 2 score: " + scoreP2);
         p2ScoreUI.text = "Player 2 score: " + scoreP2;
     }
+
+	IEnumerator Meow(){
+		yield return new WaitForSeconds (3);
+		while (catCount > 0) {
+		yield return new WaitForSeconds (Random.Range (3, 10));
+		sound.clip = catsMeow[Random.Range(0, catsMeow.Length)];
+		sound.Play();
+		Debug.LogWarning ("meow");
+		}
+	}
 
 }
