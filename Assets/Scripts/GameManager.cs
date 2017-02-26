@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
 			//Win
 			Debug.LogWarning("win");
 			gameOverUI.text = "Catastrophe Averted: \nMission Successful";
+			StartCoroutine ("ResetGame");
 		}
 		if (catCount >= 1000) {
 			//Lose
