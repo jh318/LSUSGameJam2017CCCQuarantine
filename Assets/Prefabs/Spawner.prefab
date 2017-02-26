@@ -69,8 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1079052916190556, guid: 58ea30b509720454c991ced7a5fee3d0, type: 2}
   spawnEnabled: 1
-  radius: 3
-  spawnTime: 5
+  radius: 1
+  spawnTime: 2
 --- !u!212 &212170126567436916
 SpriteRenderer:
   m_ObjectHideFlags: 1
