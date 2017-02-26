@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 
     int scoreP1 = 0;
     int scoreP2 = 0;
-	float timer = 0.0f; 
+	public float timer = 300.0f; 
 
 	public int catCount = 0; // needs to equal # of cats that begin in scene.
 
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
-		timer += Time.deltaTime;
+		timer -= Time.deltaTime;
 		timerUI.text = "Time: " + Mathf.Round (timer);
 		catCountUI.text = "Kittens: " + catCount;
 		if (catCount <= 0) {
@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour {
 			//Lose
 			Debug.LogWarning("Lose");
 			gameOverUI.text = "Catastrophic Crisis Imminent: Abort Mission";
+			StartCoroutine ("ResetGame");
+		}
+		if (timer <= 0) {
+			gameOverUI.text = "Catastrophe Quarantined ...for now";
 			StartCoroutine ("ResetGame");
 		}
 		musicPitch.pitch = catCount * .0003f + 1;
