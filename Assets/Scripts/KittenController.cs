@@ -7,7 +7,11 @@ public class KittenController : MonoBehaviour {
 
 	private Rigidbody2D body;
 	private Vector3 randomDirection;
+	public Sprite[] catSprites;
 
+	void Awake(){
+		gameObject.GetComponent<SpriteRenderer> ().sprite = catSprites[Random.Range (0, 9)];
+	}
 
 	void Start(){
 		body = GetComponent<Rigidbody2D> ();
