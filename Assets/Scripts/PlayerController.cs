@@ -12,11 +12,16 @@ public class PlayerController : MonoBehaviour {
     public string yAxis = "Vertical";
     public string catchButton = "Catch";
     public string playerName = "player";
+	public Sprite playerNeutral;
+	public Sprite playerCatch;
 
+	private SpriteRenderer playerSprite; 
     private Rigidbody2D body;
+
 
     private void Start()
     {
+		playerSprite = GetComponentInChildren<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
     }
  
@@ -34,8 +39,10 @@ public class PlayerController : MonoBehaviour {
         //    Cat.SetActive(false);
         //    Debug.Log("Caught The Cat");
         //}
-                    
+		playerSprite.sprite = playerNeutral;
+
         yield return new WaitForSeconds(.1f);
+		playerSprite.sprite = playerCatch;         
 
         Catcher.SetActive(false);
 
