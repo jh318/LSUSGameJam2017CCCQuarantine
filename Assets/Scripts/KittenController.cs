@@ -8,8 +8,6 @@ public class KittenController : MonoBehaviour {
 	private Rigidbody2D body;
 	private Vector3 randomDirection;
 	public Sprite[] catSprites;
-	public AudioClip[] catSounds;
-	public AudioSource sound;
 
 	void Awake(){
 		gameObject.GetComponent<SpriteRenderer> ().sprite = catSprites[Random.Range (0, 9)];
@@ -19,7 +17,6 @@ public class KittenController : MonoBehaviour {
 		body = GetComponent<Rigidbody2D> ();
 		randomDirection = RandomDirectionNumberGenerator();
 		StartCoroutine ("ChangeDirection");
-		StartCoroutine("Meow");
 	}
 
 	void FixedUpdate(){
@@ -51,14 +48,6 @@ public class KittenController : MonoBehaviour {
 			yield return new WaitForSeconds (2);
 			randomDirection = RandomDirectionNumberGenerator();
 
-		}
-	}
-
-	IEnumerator Meow(){
-		while (enabled) {
-			yield return new WaitForSeconds (Random.Range (1, 60));
-			sound.clip = catSounds [Random.Range (0, catSounds.Length)];
-			sound.Play ();
 		}
 	}
 }
