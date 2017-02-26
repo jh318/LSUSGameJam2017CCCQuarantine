@@ -13,8 +13,8 @@ public class P1CatchScript : MonoBehaviour {
             Debug.Log("Caught The Cat");
 			GameManager.instance.UpdateP1Score ();
 			GameManager.instance.catCount--;
-            //c.gameObject.SetActive(false);
-			Destroy (c.gameObject);
+            c.gameObject.SetActive(false);
+			//Destroy (c.gameObject);
         }
 		if (c.gameObject.tag == "Barricade" && hasBarricade == false) 
 		{

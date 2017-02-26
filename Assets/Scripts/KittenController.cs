@@ -15,7 +15,7 @@ public class KittenController : MonoBehaviour {
 
 	void Start(){
 		body = GetComponent<Rigidbody2D> ();
-		randomDirection = RandomDirectionNumberGenerator();
+		//randomDirection = RandomDirectionNumberGenerator();
 		StartCoroutine ("ChangeDirection");
 	}
 
@@ -39,9 +39,9 @@ public class KittenController : MonoBehaviour {
 		return randomDirection;
 	}
 
-	void OnCollisionEnter2D(Collision2D collision){
+	/**void OnCollisionEnter2D(Collision2D collision){
 		randomDirection = RandomDirectionNumberGenerator();
-	}
+	}*/
 
 	IEnumerator ChangeDirection () {
 		while (enabled) {
