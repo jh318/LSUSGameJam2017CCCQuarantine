@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour {
 			//Lose
 			Debug.LogWarning("Lose");
 			gameOverUI.text = "Catastrophic Crisis Imminent: Abort Mission";
+			StartCoroutine ("ResetGame");
 		}
 		musicPitch.pitch = catCount * .0003f + 1;
 
@@ -80,4 +82,8 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	IEnumerator ResetGame(){
+		yield return new WaitForSeconds (5);
+		SceneManager.LoadScene ("MainMenu");
+	}
 }
