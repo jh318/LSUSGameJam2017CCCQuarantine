@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour {
     int scoreP2 = 0;
 	float timer = 0.0f; 
 
+	public int catCount = 0; // needs to equal # of cats that begin in scene.
+
+
     public Text p1ScoreUI;
     public Text p2ScoreUI;
 	public Text timerUI;
 	public Text catCountUI;
-	public int catCount = 0; // needs to equal # of cats that begin in scene.
+	public Text gameOverUI;
 
 
     private void Awake()
@@ -32,6 +35,16 @@ public class GameManager : MonoBehaviour {
 		timer += Time.deltaTime;
 		timerUI.text = "Time: " + Mathf.Round (timer);
 		catCountUI.text = "Kittens: " + catCount;
+		if (catCount <= 0) {
+			//Win
+			Debug.LogWarning("win");
+			gameOverUI.text = "Catastrophe Averted: \nMission Successful";
+		}
+		if (catCount >= 1000) {
+			//Lose
+			Debug.LogWarning("Lose");
+			gameOverUI.text = "Catastrophic Crisis Imminent: Abort Mission";
+		}
 
     }
 
